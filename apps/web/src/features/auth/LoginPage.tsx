@@ -2,6 +2,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
 import { Link, useRouter } from '@tanstack/react-router';
 import { useForm } from 'react-hook-form';
+import { Button } from '../../shared/ui/Button';
+import { Field } from '../../shared/ui/Field';
+import { Input } from '../../shared/ui/Input';
 import { login } from './api';
 import { safeRedirect } from './safeRedirect';
 import { loginSchema, type LoginInput } from './schemas';
@@ -20,19 +23,28 @@ export function LoginPage({ redirect }: { redirect?: string }) {
   });
 
   return (
-    <main>
-      <h1>Welcome back</h1>
-      <p>Sign in to your workspace.</p>
+    <>
+      <div>
+        <h1 className="text-2xl font-semibold">Welcome back</h1>
+        <p className="text-muted-foreground">Sign in to your workspace.</p>
+      </div>
 
       <form
         onSubmit={handleSubmit((values) => mutation.mutate(values))}
         noValidate
+        className="flex flex-col gap-4"
       >
-        {mutation.isError && <p role="alert">{mutation.error.message}</p>}
+        {mutation.isError && (
+          <p
+            role="alert"
+            className="rounded-md bg-destructive/15 px-3 py-2 font-medium text-destructive"
+          >
+            {mutation.error.message}
+          </p>
+        )}
 
-        <div>
-          <label htmlFor="email">Email</label>
-          <input
+        <Field id="email" label="Email" error={errors.email?.message}>
+          <Input
             id="email"
             type="email"
             autoComplete="email"
@@ -40,12 +52,10 @@ export function LoginPage({ redirect }: { redirect?: string }) {
             aria-describedby={errors.email ? 'email-error' : undefined}
             {...register('email')}
           />
-          {errors.email && <span id="email-error">{errors.email.message}</span>}
-        </div>
+        </Field>
 
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
+        <Field id="password" label="Password" error={errors.password?.message}>
+          <Input
             id="password"
             type="password"
             autoComplete="current-password"
@@ -53,21 +63,23 @@ export function LoginPage({ redirect }: { redirect?: string }) {
             aria-describedby={errors.password ? 'password-error' : undefined}
             {...register('password')}
           />
-          {errors.password && (
-            <span id="password-error">{errors.password.message}</span>
-          )}
-        </div>
+        </Field>
 
-        <Link to="/reset">Forgot password?</Link>
+        <Link to="/reset" className="text-primary hover:underline">
+          Forgot password?
+        </Link>
 
-        <button type="submit" disabled={mutation.isPending}>
+        <Button type="submit" disabled={mutation.isPending}>
           {mutation.isPending ? 'Signing in…' : 'Sign in'}
-        </button>
+        </Button>
       </form>
 
-      <p>
-        No account? <Link to="/signup">Sign up</Link>
+      <p className="text-muted-foreground">
+        No account?{' '}
+        <Link to="/signup" className="text-primary hover:underline">
+          Sign up
+        </Link>
       </p>
-    </main>
+    </>
   );
 }

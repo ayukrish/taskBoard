@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PublicRouteImport } from './routes/_public'
 import { Route as PublicLoginIndexRouteImport } from './routes/_public/login/index'
 import { Route as PublicResetIndexRouteImport } from './routes/_public/reset/index'
 import { Route as PublicSignupIndexRouteImport } from './routes/_public/signup/index'
@@ -19,20 +20,24 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PublicLoginIndexRoute = PublicLoginIndexRouteImport.update({
-  id: '/_public/login/',
-  path: '/login/',
+const PublicRoute = PublicRouteImport.update({
+  id: '/_public',
   getParentRoute: () => rootRouteImport,
+} as any)
+const PublicLoginIndexRoute = PublicLoginIndexRouteImport.update({
+  id: '/login/',
+  path: '/login/',
+  getParentRoute: () => PublicRoute,
 } as any)
 const PublicResetIndexRoute = PublicResetIndexRouteImport.update({
-  id: '/_public/reset/',
+  id: '/reset/',
   path: '/reset/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => PublicRoute,
 } as any)
 const PublicSignupIndexRoute = PublicSignupIndexRouteImport.update({
-  id: '/_public/signup/',
+  id: '/signup/',
   path: '/signup/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => PublicRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -50,6 +55,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_public': typeof PublicRouteWithChildren
   '/_public/login/': typeof PublicLoginIndexRoute
   '/_public/reset/': typeof PublicResetIndexRoute
   '/_public/signup/': typeof PublicSignupIndexRoute
@@ -62,6 +68,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/_public'
     | '/_public/login/'
     | '/_public/reset/'
     | '/_public/signup/'
@@ -69,9 +76,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  PublicLoginIndexRoute: typeof PublicLoginIndexRoute
-  PublicResetIndexRoute: typeof PublicResetIndexRoute
-  PublicSignupIndexRoute: typeof PublicSignupIndexRoute
+  PublicRoute: typeof PublicRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -83,35 +88,55 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_public': {
+      id: '/_public'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof PublicRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_public/login/': {
       id: '/_public/login/'
       path: '/login'
       fullPath: '/login/'
       preLoaderRoute: typeof PublicLoginIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof PublicRoute
     }
     '/_public/reset/': {
       id: '/_public/reset/'
       path: '/reset'
       fullPath: '/reset/'
       preLoaderRoute: typeof PublicResetIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof PublicRoute
     }
     '/_public/signup/': {
       id: '/_public/signup/'
       path: '/signup'
       fullPath: '/signup/'
       preLoaderRoute: typeof PublicSignupIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof PublicRoute
     }
   }
 }
 
-const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
+interface PublicRouteChildren {
+  PublicLoginIndexRoute: typeof PublicLoginIndexRoute
+  PublicResetIndexRoute: typeof PublicResetIndexRoute
+  PublicSignupIndexRoute: typeof PublicSignupIndexRoute
+}
+
+const PublicRouteChildren: PublicRouteChildren = {
   PublicLoginIndexRoute: PublicLoginIndexRoute,
   PublicResetIndexRoute: PublicResetIndexRoute,
   PublicSignupIndexRoute: PublicSignupIndexRoute,
+}
+
+const PublicRouteWithChildren =
+  PublicRoute._addFileChildren(PublicRouteChildren)
+
+const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
+  PublicRoute: PublicRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
