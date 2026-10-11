@@ -8,105 +8,102 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from './routes/__root';
-import { Route as IndexRouteImport } from './routes/index';
-import { Route as PublicLoginIndexRouteImport } from './routes/_public/login/index';
-import { Route as PublicResetIndexRouteImport } from './routes/_public/reset/index';
-import { Route as PublicSignupIndexRouteImport } from './routes/_public/signup/index';
+import { Route as rootRouteImport } from './routes/__root'
+import { Route as IndexRouteImport } from './routes/index'
+import { Route as PublicLoginIndexRouteImport } from './routes/_public/login/index'
+import { Route as PublicResetIndexRouteImport } from './routes/_public/reset/index'
+import { Route as PublicSignupIndexRouteImport } from './routes/_public/signup/index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
-} as any);
-
+} as any)
 const PublicLoginIndexRoute = PublicLoginIndexRouteImport.update({
   id: '/_public/login/',
   path: '/login/',
   getParentRoute: () => rootRouteImport,
-} as any);
-
+} as any)
 const PublicResetIndexRoute = PublicResetIndexRouteImport.update({
   id: '/_public/reset/',
   path: '/reset/',
   getParentRoute: () => rootRouteImport,
-} as any);
-
+} as any)
 const PublicSignupIndexRoute = PublicSignupIndexRouteImport.update({
   id: '/_public/signup/',
   path: '/signup/',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute;
-  '/login/': typeof PublicLoginIndexRoute;
-  '/reset/': typeof PublicResetIndexRoute;
-  '/signup/': typeof PublicSignupIndexRoute;
+  '/': typeof IndexRoute
+  '/login/': typeof PublicLoginIndexRoute
+  '/reset/': typeof PublicResetIndexRoute
+  '/signup/': typeof PublicSignupIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute;
-  '/login': typeof PublicLoginIndexRoute;
-  '/reset': typeof PublicResetIndexRoute;
-  '/signup': typeof PublicSignupIndexRoute;
+  '/': typeof IndexRoute
+  '/login': typeof PublicLoginIndexRoute
+  '/reset': typeof PublicResetIndexRoute
+  '/signup': typeof PublicSignupIndexRoute
 }
 export interface FileRoutesById {
-  __root__: typeof rootRouteImport;
-  '/': typeof IndexRoute;
-  '/_public/login/': typeof PublicLoginIndexRoute;
-  '/_public/reset/': typeof PublicResetIndexRoute;
-  '/_public/signup/': typeof PublicSignupIndexRoute;
+  __root__: typeof rootRouteImport
+  '/': typeof IndexRoute
+  '/_public/login/': typeof PublicLoginIndexRoute
+  '/_public/reset/': typeof PublicResetIndexRoute
+  '/_public/signup/': typeof PublicSignupIndexRoute
 }
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath;
-  fullPaths: '/' | '/login/' | '/reset/' | '/signup/';
-  fileRoutesByTo: FileRoutesByTo;
-  to: '/' | '/login' | '/reset' | '/signup';
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths: '/' | '/login/' | '/reset/' | '/signup/'
+  fileRoutesByTo: FileRoutesByTo
+  to: '/' | '/login' | '/reset' | '/signup'
   id:
     | '__root__'
     | '/'
     | '/_public/login/'
     | '/_public/reset/'
-    | '/_public/signup/';
-  fileRoutesById: FileRoutesById;
+    | '/_public/signup/'
+  fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute;
-  PublicLoginIndexRoute: typeof PublicLoginIndexRoute;
-  PublicResetIndexRoute: typeof PublicResetIndexRoute;
-  PublicSignupIndexRoute: typeof PublicSignupIndexRoute;
+  IndexRoute: typeof IndexRoute
+  PublicLoginIndexRoute: typeof PublicLoginIndexRoute
+  PublicResetIndexRoute: typeof PublicResetIndexRoute
+  PublicSignupIndexRoute: typeof PublicSignupIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/': {
-      id: '/';
-      path: '/';
-      fullPath: '/';
-      preLoaderRoute: typeof IndexRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_public/login/': {
-      id: '/_public/login/';
-      path: '/login';
-      fullPath: '/login/';
-      preLoaderRoute: typeof PublicLoginIndexRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
+      id: '/_public/login/'
+      path: '/login'
+      fullPath: '/login/'
+      preLoaderRoute: typeof PublicLoginIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_public/reset/': {
-      id: '/_public/reset/';
-      path: '/reset';
-      fullPath: '/reset/';
-      preLoaderRoute: typeof PublicResetIndexRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
+      id: '/_public/reset/'
+      path: '/reset'
+      fullPath: '/reset/'
+      preLoaderRoute: typeof PublicResetIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_public/signup/': {
-      id: '/_public/signup/';
-      path: '/signup';
-      fullPath: '/signup/';
-      preLoaderRoute: typeof PublicSignupIndexRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
+      id: '/_public/signup/'
+      path: '/signup'
+      fullPath: '/signup/'
+      preLoaderRoute: typeof PublicSignupIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -115,7 +112,7 @@ const rootRouteChildren: RootRouteChildren = {
   PublicLoginIndexRoute: PublicLoginIndexRoute,
   PublicResetIndexRoute: PublicResetIndexRoute,
   PublicSignupIndexRoute: PublicSignupIndexRoute,
-};
+}
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>();
+  ._addFileTypes<FileRouteTypes>()
