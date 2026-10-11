@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Sign up · Taskboard</title>
+    <link rel="stylesheet" href="shell.css" />
+    <link rel="stylesheet" href="auth.css" />
+  </head>
+  <body class="framed">
+    <div class="mock-bar">
+      <a href="index.html">&larr; All screens</a><strong>Sign up</strong
+      ><span class="mono">/signup · features/auth</span
+      ><span class="spacer"></span
+      ><button data-action="theme">Light/Dark</button>
+    </div>
+    <div class="auth">
+      <main class="auth-form">
+        <form onsubmit="return false;" novalidate>
+          <div class="row">
+            <div class="ws-logo" aria-hidden="true">T</div>
+            <strong>Taskboard</strong>
+          </div>
+          <div>
+            <h1>Create your account</h1>
+            <p class="muted">Free while you build your first board.</p>
+          </div>
+          <div class="field">
+            <label for="n">Display name</label
+            ><input
+              id="n"
+              class="input"
+              value="Sam Rivera"
+              autocomplete="name"
+            />
+          </div>
+          <div class="field">
+            <label for="e">Email</label
+            ><input
+              id="e"
+              class="input"
+              type="email"
+              value="sam@acme.com"
+              autocomplete="email"
+            />
+          </div>
+          <div class="field">
+            <label for="p">Password</label
+            ><input
+              id="p"
+              class="input error"
+              type="password"
+              value="abc"
+              autocomplete="new-password"
+              aria-invalid="true"
+            /><span class="err">Use at least 10 characters.</span
+            ><span class="hint">Strength: weak</span>
+          </div>
+          <button class="btn primary" style="justify-content: center">
+            Create account
+          </button>
+          <div class="or">or</div>
+          <button class="btn" style="justify-content: center">
+            Continue with Google
+          </button>
+          <button class="btn" style="justify-content: center">
+            Continue with GitHub
+          </button>
+          <p class="muted">
+            Already have an account? <a href="login.html">Sign in</a>
+          </p>
+          <p class="mock-note">
+            Validation: shared Zod schema (packages/shared). Rate-limited
+            server-side. Accepting an invite lands here with the email prefilled
+            and locked.
+          </p>
+        </form>
+      </main>
+      <aside class="auth-hero" aria-hidden="true">
+        <div>
+          <h2>Plan, track and ship together.</h2>
+          <div class="mini">
+            <div><i></i><i></i></div>
+            <div><i></i><i></i><i></i></div>
+            <div><i></i></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <script src="design.js"></script>
+  </body>
+</html>

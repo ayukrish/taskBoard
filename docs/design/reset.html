@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Reset password · Taskboard</title>
+    <link rel="stylesheet" href="shell.css" />
+    <link rel="stylesheet" href="auth.css" />
+  </head>
+  <body class="framed">
+    <div class="mock-bar">
+      <a href="index.html">&larr; All screens</a><strong>Reset password</strong
+      ><span class="mono">/reset · features/auth</span
+      ><span class="spacer"></span
+      ><button data-action="theme">Light/Dark</button>
+    </div>
+    <div class="auth">
+      <main class="auth-form">
+        <form onsubmit="return false;" novalidate>
+          <div class="row">
+            <div class="ws-logo" aria-hidden="true">T</div>
+            <strong>Taskboard</strong>
+          </div>
+          <div>
+            <h1>Reset your password</h1>
+            <p class="muted">Enter your email and we'll send a reset link.</p>
+          </div>
+          <div class="field">
+            <label for="e">Email</label
+            ><input
+              id="e"
+              class="input"
+              type="email"
+              placeholder="you@company.com"
+              autocomplete="email"
+            />
+          </div>
+          <button class="btn primary" style="justify-content: center">
+            Send reset link
+          </button>
+          <hr class="divider" />
+          <div class="state" role="status">
+            <div class="glyph" aria-hidden="true">&#9993;</div>
+            <h3>Check your inbox</h3>
+            <p>
+              If an account exists for sam@acme.com, a reset link is on its way.
+            </p>
+            <a href="login.html">Back to sign in</a>
+          </div>
+          <p class="mock-note">
+            Second panel = success state after submit (same response whether or
+            not the account exists). Set-new-password step reuses this layout
+            with a password + confirm field.
+          </p>
+        </form>
+      </main>
+      <aside class="auth-hero" aria-hidden="true">
+        <div>
+          <h2>Plan, track and ship together.</h2>
+          <div class="mini">
+            <div><i></i><i></i></div>
+            <div><i></i><i></i><i></i></div>
+            <div><i></i></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <script src="design.js"></script>
+  </body>
+</html>

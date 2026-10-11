@@ -1,0 +1,125 @@
+/* Taskboard design tokens. Names mirror Tailwind/shadcn so they map 1:1 to
+   tailwind.config / index.css in apps/web. Light default, dark via
+   prefers-color-scheme or [data-theme="dark"] on <html>. */
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222 22% 12%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 22% 12%;
+  --popover: 0 0% 100%;
+  --muted: 220 16% 96%;
+  --muted-foreground: 220 9% 38%;
+  --border: 220 14% 90%;
+  --input: 220 14% 84%;
+  --primary: 231 70% 46%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 220 16% 94%;
+  --secondary-foreground: 222 22% 16%;
+  --accent: 231 80% 96%;
+  --accent-foreground: 231 70% 36%;
+  --destructive: 0 70% 42%;
+  --destructive-foreground: 0 0% 100%;
+  --success: 150 60% 28%;
+  --warning: 32 90% 34%;
+  --warning-bg: 40 100% 93%;
+  --ring: 231 70% 46%;
+
+  --priority-highest: 0 70% 42%;
+  --priority-high: 20 80% 40%;
+  --priority-medium: 38 85% 34%;
+  --priority-low: 200 70% 34%;
+  --priority-lowest: 220 9% 40%;
+
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-lg: 12px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 20px;
+  --text-xl: 24px;
+
+  --shadow-card: 0 1px 2px hsl(222 22% 12% / 0.08);
+  --shadow-pop: 0 12px 32px hsl(222 22% 12% / 0.18);
+  --sidebar-w: 248px;
+  --topbar-h: 52px;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --background: 224 22% 9%;
+    --foreground: 220 20% 94%;
+    --card: 224 20% 12%;
+    --card-foreground: 220 20% 94%;
+    --popover: 224 20% 13%;
+    --muted: 224 18% 15%;
+    --muted-foreground: 220 12% 70%;
+    --border: 224 16% 22%;
+    --input: 224 16% 28%;
+    --primary: 231 90% 74%;
+    --primary-foreground: 224 30% 10%;
+    --secondary: 224 16% 18%;
+    --secondary-foreground: 220 20% 92%;
+    --accent: 231 40% 22%;
+    --accent-foreground: 231 90% 86%;
+    --destructive: 0 80% 68%;
+    --destructive-foreground: 224 30% 10%;
+    --success: 150 55% 60%;
+    --warning: 38 90% 62%;
+    --warning-bg: 38 50% 16%;
+    --ring: 231 90% 74%;
+    --priority-highest: 0 80% 70%;
+    --priority-high: 20 85% 66%;
+    --priority-medium: 40 85% 62%;
+    --priority-low: 200 75% 66%;
+    --priority-lowest: 220 12% 68%;
+    --shadow-card: 0 1px 2px hsl(0 0% 0% / 0.4);
+    --shadow-pop: 0 12px 32px hsl(0 0% 0% / 0.6);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --background: 224 22% 9%;
+  --foreground: 220 20% 94%;
+  --card: 224 20% 12%;
+  --card-foreground: 220 20% 94%;
+  --popover: 224 20% 13%;
+  --muted: 224 18% 15%;
+  --muted-foreground: 220 12% 70%;
+  --border: 224 16% 22%;
+  --input: 224 16% 28%;
+  --primary: 231 90% 74%;
+  --primary-foreground: 224 30% 10%;
+  --secondary: 224 16% 18%;
+  --secondary-foreground: 220 20% 92%;
+  --accent: 231 40% 22%;
+  --accent-foreground: 231 90% 86%;
+  --destructive: 0 80% 68%;
+  --destructive-foreground: 224 30% 10%;
+  --success: 150 55% 60%;
+  --warning: 38 90% 62%;
+  --warning-bg: 38 50% 16%;
+  --ring: 231 90% 74%;
+  --priority-highest: 0 80% 70%;
+  --priority-high: 20 85% 66%;
+  --priority-medium: 40 85% 62%;
+  --priority-low: 200 75% 66%;
+  --priority-lowest: 220 12% 68%;
+  --shadow-card: 0 1px 2px hsl(0 0% 0% / 0.4);
+  --shadow-pop: 0 12px 32px hsl(0 0% 0% / 0.6);
+  color-scheme: dark;
+}

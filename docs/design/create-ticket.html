@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Create ticket · Taskboard</title>
+    <link rel="stylesheet" href="shell.css" />
+    <link rel="stylesheet" href="board.css" />
+  </head>
+  <body class="framed">
+    <div class="mock-bar">
+      <a href="index.html">&larr; All screens</a><strong>Create ticket</strong
+      ><span class="mono">dialog over board · features/tickets</span
+      ><span class="spacer"></span
+      ><button data-action="role">Viewer preview</button
+      ><button data-action="theme">Light/Dark</button>
+    </div>
+    <div class="app">
+      <aside class="sidebar" aria-label="Primary">
+        <button
+          class="ws-switch"
+          style="font: inherit; color: inherit; text-align: left"
+          aria-haspopup="menu"
+        >
+          <span class="ws-logo" aria-hidden="true">A</span
+          ><span class="grow"
+            ><strong>Acme</strong><br /><span
+              class="muted"
+              style="font-size: 12px"
+              >3 projects · 6 members</span
+            ></span
+          ><span aria-hidden="true">&#9662;</span>
+        </button>
+        <nav class="nav" aria-label="Workspace">
+          <a href="workspace-home.html">Projects home</a>
+          <a href="notifications.html"
+            >Notifications <span class="count badge accent">3</span></a
+          >
+          <a href="workspace-settings.html">Members &amp; settings</a>
+          <h4>Project · WEB</h4>
+          <a href="board.html" aria-current="page">Board</a>
+          <a href="list.html">List</a>
+          <a href="project-settings.html">Project settings</a>
+          <h4>Other projects</h4>
+          <a href="#">Mobile app <span class="count">MOB</span></a>
+          <a href="#">Design system <span class="count">DS</span></a>
+        </nav>
+        <div class="mock-note" style="margin-top: auto">
+          app/ layout shell · sidebar becomes a drawer under 800px
+        </div>
+      </aside>
+      <header class="topbar">
+        <nav aria-label="Breadcrumb" class="muted">Acme / Web app / Board</nav>
+        <span class="grow"></span>
+        <button class="search-trigger" data-action="open" data-target="palette">
+          <span aria-hidden="true">&#128269;</span
+          ><span class="grow" style="text-align: left">Search or jump to…</span
+          ><kbd>&#8984;K</kbd>
+        </button>
+        <button
+          class="btn icon ghost"
+          aria-label="Keyboard shortcuts"
+          data-action="open"
+          data-target="shortcuts"
+        >
+          ?
+        </button>
+        <a
+          class="btn icon ghost"
+          href="notifications.html"
+          aria-label="Notifications, 3 unread"
+          style="text-decoration: none"
+          >&#128276;</a
+        >
+        <span class="avatar lg" role="img" aria-label="Account: Sam Rivera"
+          >SR</span
+        >
+      </header>
+      <main class="main" id="main">
+        <div class="banner warn" role="status">
+          <span aria-hidden="true">&#9888;</span> Connection lost. Reconnecting…
+          Changes will sync when you're back online.
+          <button class="btn sm" style="margin-left: auto">Retry now</button>
+        </div>
+        <div class="board-head">
+          <div class="row" style="flex-wrap: wrap; gap: 12px">
+            <div>
+              <h1>Web app</h1>
+              <p class="muted">WEB · Board</p>
+            </div>
+            <span class="grow"></span>
+            <span
+              class="row"
+              aria-label="Currently viewing: Jo Kim, Alex Lee, and 1 other"
+              ><span class="avatars"
+                ><span class="avatar" title="Jo Kim">JK</span
+                ><span class="avatar" title="Alex Lee">AL</span
+                ><span class="avatar">+1</span></span
+              ><span class="muted" style="font-size: 12px"
+                >3 viewing</span
+              ></span
+            >
+            <div class="row" role="group" aria-label="View">
+              <a
+                class="btn sm"
+                style="text-decoration: none"
+                aria-current="page"
+                >Board</a
+              ><a
+                class="btn sm ghost"
+                href="list.html"
+                style="text-decoration: none"
+                >List</a
+              >
+            </div>
+            <button
+              class="btn primary can-edit"
+              data-action="open"
+              data-target="create"
+            >
+              + Create ticket <kbd>C</kbd>
+            </button>
+          </div>
+        </div>
+        <div class="filters" role="search" aria-label="Filter tickets">
+          <input
+            class="input search"
+            type="search"
+            placeholder="Search title, description, key  /"
+            aria-label="Search tickets"
+            value="onboarding"
+          />
+          <button class="fchip on">
+            Assignee: me <span aria-hidden="true">&times;</span>
+          </button>
+          <button class="fchip">Label &#9662;</button>
+          <button class="fchip on">
+            Priority: High+ <span aria-hidden="true">&times;</span>
+          </button>
+          <button class="fchip">Type &#9662;</button>
+          <button class="fchip">Due &#9662;</button>
+          <select class="input" aria-label="Sort">
+            <option>Sort: Manual</option>
+            <option>Updated</option>
+            <option>Priority</option>
+          </select>
+          <button class="btn sm ghost">Clear all</button>
+          <span class="grow"></span>
+          <select class="input" aria-label="Saved views">
+            <option>Saved view: My open work</option>
+            <option>Bugs this week</option>
+          </select>
+          <button class="btn sm can-edit">Save view</button>
+        </div>
+        <div style="padding: 8px 20px">
+          <div class="url-chip" title="URL is the source of truth for filters">
+            /w/acme/p/web/board?q=onboarding&amp;assignee=me&amp;priority=high,highest&amp;sort=manual&amp;view=board
+          </div>
+        </div>
+        <div
+          class="board"
+          tabindex="0"
+          aria-label="Board columns, scrolls horizontally"
+        >
+          <section class="col-board" aria-label="To Do, 3 tickets">
+            <div class="col-head">
+              To Do <span class="badge">3</span
+              ><button
+                class="btn ghost sm icon can-edit"
+                aria-label="Column menu"
+                style="margin-left: auto"
+              >
+                &#8943;
+              </button>
+            </div>
+            <div class="col-cards">
+              <a
+                class="tcard"
+                href="ticket.html"
+                aria-roledescription="draggable card"
+              >
+                <span class="title">Redesign onboarding checklist</span>
+                <span class="row"
+                  ><span class="label-chip">ux</span
+                  ><span class="label-chip">growth</span></span
+                >
+                <span class="meta"
+                  ><span class="type story" aria-label="Story">S</span
+                  ><span class="mono">WEB-142</span
+                  ><span class="p-high" aria-label="Priority High">&uarr;</span
+                  ><span>Apr 12</span
+                  ><span class="avatar" aria-label="Assignee SR">SR</span></span
+                >
+              </a>
+
+              <a
+                class="tcard"
+                href="ticket.html"
+                aria-roledescription="draggable card"
+              >
+                <span class="title">Add empty state to saved views</span>
+                <span class="row"><span class="label-chip">ux</span></span>
+                <span class="meta"
+                  ><span class="type task" aria-label="Task">T</span
+                  ><span class="mono">WEB-139</span
+                  ><span class="p-medium" aria-label="Priority Medium">=</span
+                  ><span class="avatar" aria-label="Assignee JK">JK</span></span
+                >
+              </a>
+
+              <a
+                class="tcard"
+                href="ticket.html"
+                aria-roledescription="draggable card"
+              >
+                <span class="title">Document keyboard shortcuts</span>
+                <span class="row"><span class="label-chip">docs</span></span>
+                <span class="meta"
+                  ><span class="type task" aria-label="Task">T</span
+                  ><span class="mono">WEB-131</span
+                  ><span class="p-low" aria-label="Priority Low">&darr;</span
+                  ><span>Apr 30</span
+                  ><span class="avatar" aria-label="Assignee AL">AL</span></span
+                >
+              </a>
+            </div>
+            <button
+              class="btn ghost col-add can-edit"
+              style="justify-content: flex-start"
+            >
+              + Add ticket
+            </button>
+          </section>
+          <section
+            class="col-board over-wip"
+            aria-label="In Progress, 3 of 3 WIP limit"
+          >
+            <div class="col-head">
+              In Progress <span class="badge">3</span
+              ><span class="wip badge warn">WIP 3/3</span>
+            </div>
+            <div class="col-cards">
+              <a
+                class="tcard"
+                href="ticket.html"
+                aria-roledescription="draggable card"
+              >
+                <span class="title">Drag preview offset on Safari</span>
+                <span class="row"
+                  ><span class="label-chip">bug</span
+                  ><span class="label-chip">dnd</span></span
+                >
+                <span class="meta"
+                  ><span class="type bug" aria-label="Bug">B</span
+                  ><span class="mono">WEB-138</span
+                  ><span class="p-highest" aria-label="Priority Highest"
+                    >&#8657;</span
+                  ><span>Today</span
+                  ><span class="avatar" aria-label="Assignee SR">SR</span></span
+                >
+              </a>
+              <div class="drop-slot can-edit" aria-hidden="true"></div>
+
+              <a
+                class="tcard"
+                href="ticket.html"
+                aria-roledescription="draggable card"
+              >
+                <span class="title">Optimistic move rollback toast</span>
+                <span class="row"><span class="label-chip">dnd</span></span>
+                <span class="meta"
+                  ><span class="type story" aria-label="Story">S</span
+                  ><span class="mono">WEB-135</span
+                  ><span class="p-high" aria-label="Priority High">&uarr;</span
+                  ><span class="avatar" aria-label="Assignee AL">AL</span></span
+                >
+              </a>
+
+              <a
+                class="tcard"
+                href="ticket.html"
+                aria-roledescription="draggable card"
+              >
+                <span class="title">Presence avatars in header</span>
+                <span class="row"
+                  ><span class="label-chip">realtime</span></span
+                >
+                <span class="meta"
+                  ><span class="type task" aria-label="Task">T</span
+                  ><span class="mono">WEB-127</span
+                  ><span class="p-medium" aria-label="Priority Medium">=</span
+                  ><span class="avatar" aria-label="Assignee JK">JK</span></span
+                >
+              </a>
+            </div>
+            <div class="wip-warn can-edit" role="status">
+              Column is at its WIP limit. Dropping here will exceed it (soft
+              warning).
+            </div>
+          </section>
+          <section class="col-board" aria-label="In Review, 2 tickets">
+            <div class="col-head">In Review <span class="badge">2</span></div>
+            <div class="col-cards">
+              <a
+                class="tcard dragging"
+                href="ticket.html"
+                aria-roledescription="draggable card"
+              >
+                <span class="title">Filter bar URL round-trip</span>
+                <span class="row"><span class="label-chip">filters</span></span>
+                <span class="meta"
+                  ><span class="type story" aria-label="Story">S</span
+                  ><span class="mono">WEB-120</span
+                  ><span class="p-high" aria-label="Priority High">&uarr;</span
+                  ><span>Apr 8</span
+                  ><span class="avatar" aria-label="Assignee PN">PN</span></span
+                >
+              </a>
+
+              <a
+                class="tcard"
+                href="ticket.html"
+                aria-roledescription="draggable card"
+              >
+                <span class="title">Fix focus ring on card links</span>
+                <span class="row"><span class="label-chip">a11y</span></span>
+                <span class="meta"
+                  ><span class="type bug" aria-label="Bug">B</span
+                  ><span class="mono">WEB-118</span
+                  ><span class="p-low" aria-label="Priority Low">&darr;</span
+                  ><span class="avatar" aria-label="Assignee SR">SR</span></span
+                >
+              </a>
+            </div>
+            <div class="quick-add can-edit">
+              <input
+                class="input"
+                placeholder="Ticket title…"
+                aria-label="New ticket title"
+              />
+              <div class="row">
+                <button class="btn sm primary">Add</button
+                ><button class="btn sm ghost">Cancel</button
+                ><span class="mock-note">Enter to add</span>
+              </div>
+            </div>
+          </section>
+          <section class="col-board" aria-label="Done, 1 ticket">
+            <div class="col-head">Done <span class="badge">1</span></div>
+            <div class="col-cards">
+              <a
+                class="tcard"
+                href="ticket.html"
+                aria-roledescription="draggable card"
+              >
+                <span class="title">Project key validation</span>
+                <span class="row"><span class="label-chip">api</span></span>
+                <span class="meta"
+                  ><span class="type task" aria-label="Task">T</span
+                  ><span class="mono">WEB-101</span
+                  ><span class="p-medium" aria-label="Priority Medium">=</span
+                  ><span class="avatar" aria-label="Assignee JK">JK</span></span
+                >
+              </a>
+            </div>
+          </section>
+          <div class="add-col can-edit">
+            <button class="btn" style="width: 100%">+ Add column</button>
+          </div>
+        </div>
+        <div class="page" style="max-width: none; padding-top: 0">
+          <h2 style="margin: 8px 0 12px">Board states</h2>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+              gap: 16px;
+            "
+          >
+            <div>
+              <p class="mock-note">loading (skeleton)</p>
+              <div class="col-board" style="flex: none">
+                <div class="col-head">
+                  <span class="skel" style="width: 90px; height: 16px"></span>
+                </div>
+                <div class="col-cards">
+                  <div class="skel" style="height: 84px"></div>
+                  <div class="skel" style="height: 84px"></div>
+                  <div class="skel" style="height: 84px"></div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p class="mock-note">empty column</p>
+              <div class="col-board" style="flex: none">
+                <div class="col-head">Backlog <span class="badge">0</span></div>
+                <div class="col-cards">
+                  <div class="state" style="padding: 20px">
+                    <p>No tickets here.</p>
+                    <button class="btn sm can-edit">+ Add ticket</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p class="mock-note">no results for filters</p>
+              <div class="state">
+                <div class="glyph" aria-hidden="true">&#128269;</div>
+                <h3>No tickets match</h3>
+                <p>Try removing a filter.</p>
+                <button class="btn sm">Clear filters</button>
+              </div>
+            </div>
+            <div>
+              <p class="mock-note">error</p>
+              <div class="state" role="alert">
+                <div class="glyph" aria-hidden="true">&#9888;</div>
+                <h3>Couldn't load board</h3>
+                <p>Request failed (500).</p>
+                <button class="btn">Retry</button>
+              </div>
+            </div>
+          </div>
+          <p class="mock-note" style="margin-top: 12px">
+            Viewer preview hides create, edit, drag affordances; the server also
+            rejects mutations with 403. Optimistic-move failure shows a toast
+            with Retry (below). Cards move via pointer, touch, or keyboard
+            (Space, arrows) with aria-live announcements.
+          </p>
+        </div>
+      </main>
+    </div>
+    <div
+      class="overlay"
+      id="create"
+      data-overlay
+      style="padding-top: 4vh"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="ct-h"
+    >
+      <form
+        class="dialog"
+        style="width: min(680px, 94vw); max-height: 90vh; overflow: auto"
+        onsubmit="return false;"
+        novalidate
+      >
+        <div class="row">
+          <h2 id="ct-h" class="grow">Create ticket</h2>
+          <span class="mono muted">WEB</span
+          ><button
+            type="button"
+            class="btn ghost icon"
+            data-action="close"
+            aria-label="Close"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="field">
+          <label for="ct-title"
+            >Title <span class="muted">(required)</span></label
+          >
+          <input
+            id="ct-title"
+            class="input error"
+            placeholder="What needs to be done?"
+            aria-invalid="true"
+            aria-describedby="ct-title-err"
+            autofocus
+          />
+          <span id="ct-title-err" class="err">Title is required.</span>
+        </div>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+          "
+        >
+          <div class="field">
+            <label for="ct-type">Type</label
+            ><select id="ct-type" class="input">
+              <option>Task</option>
+              <option>Bug</option>
+              <option>Story</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="ct-col">Column</label
+            ><select id="ct-col" class="input">
+              <option>To Do</option>
+              <option>In Progress</option>
+              <option>In Review</option>
+              <option>Done</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="ct-pri">Priority</label
+            ><select id="ct-pri" class="input">
+              <option>Highest</option>
+              <option>High</option>
+              <option selected>Medium</option>
+              <option>Low</option>
+              <option>Lowest</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="ct-asg">Assignee</label
+            ><select id="ct-asg" class="input">
+              <option>Unassigned</option>
+              <option>Assign to me</option>
+              <option>Jo Kim</option>
+              <option>Alex Lee</option>
+              <option>Priya Nair</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="ct-rep">Reporter</label
+            ><select id="ct-rep" class="input">
+              <option>Sam Rivera (you)</option></select
+            ><span class="hint">Defaults to you.</span>
+          </div>
+          <div class="field">
+            <label for="ct-due">Due date</label
+            ><input id="ct-due" class="input" type="date" />
+          </div>
+          <div class="field">
+            <label for="ct-est">Estimate (points)</label
+            ><input
+              id="ct-est"
+              class="input"
+              type="number"
+              min="0"
+              placeholder="e.g. 3"
+            />
+          </div>
+          <div class="field">
+            <label for="ct-lbl">Labels</label>
+            <div
+              class="input row"
+              style="
+                height: auto;
+                min-height: 36px;
+                flex-wrap: wrap;
+                padding: 4px 8px;
+              "
+              id="ct-lbl"
+            >
+              <span class="label-chip"
+                >ux
+                <button
+                  type="button"
+                  class="btn ghost sm icon"
+                  style="width: 18px; height: 18px; padding: 0"
+                  aria-label="Remove label ux"
+                >
+                  &times;
+                </button></span
+              ><input
+                aria-label="Add label"
+                placeholder="Add…"
+                style="
+                  border: 0;
+                  background: transparent;
+                  color: inherit;
+                  font: inherit;
+                  flex: 1;
+                  min-width: 60px;
+                  outline: none;
+                "
+              />
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label for="ct-desc">Description</label>
+          <div class="md">
+            <div class="md-tabs" role="tablist">
+              <button type="button" class="btn sm" aria-selected="true">
+                Write</button
+              ><button type="button" class="btn sm ghost">Preview</button>
+            </div>
+            <textarea
+              id="ct-desc"
+              class="input"
+              style="border: 0; border-radius: 0 0 8px 8px"
+              placeholder="Markdown supported"
+            ></textarea>
+          </div>
+        </div>
+        <div class="row" style="flex-wrap: wrap">
+          <label class="row muted"
+            ><input type="checkbox" /> Create another</label
+          ><span class="grow"></span>
+          <button type="button" class="btn" data-action="close">Cancel</button>
+          <button class="btn primary">Create ticket</button>
+          <button class="btn primary loading" disabled>Creating…</button>
+        </div>
+        <p class="mock-note">
+          Shown: validation error (empty title), idle submit, loading submit. On
+          success the card appears in the chosen column (optimistic, real key
+          WEB-143 assigned by server), toast "Created WEB-143 · View". Opened by
+          the Create ticket button, <kbd>C</kbd>, the palette, or per-column “+
+          Add ticket” (which prefills Column). Quick-add in a column only asks
+          for a title. Members and above only; hidden for Viewers.
+        </p>
+      </form>
+    </div>
+    <div
+      class="overlay"
+      id="palette"
+      data-overlay
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-label="Command palette"
+    >
+      <div class="dialog palette">
+        <input
+          placeholder="Type a command or search tickets…"
+          aria-label="Command search"
+        />
+        <div class="group">
+          <h4>Tickets</h4>
+          <div class="item" aria-selected="true">
+            <span class="type story">S</span
+            ><span class="mono">WEB-142</span> Redesign onboarding checklist<kbd
+              >&#8629;</kbd
+            >
+          </div>
+          <div class="item">
+            <span class="type bug">B</span
+            ><span class="mono">WEB-138</span> Drag preview offset on Safari
+          </div>
+        </div>
+        <div class="group">
+          <h4>Actions</h4>
+          <div class="item">Create ticket<kbd>C</kbd></div>
+          <div class="item">Switch workspace…</div>
+          <div class="item">Go to project settings</div>
+        </div>
+        <div class="group">
+          <h4>Navigate</h4>
+          <div class="item">Projects home</div>
+          <div class="item">Notifications</div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="overlay"
+      id="shortcuts"
+      data-overlay
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-label="Keyboard shortcuts"
+    >
+      <div class="dialog">
+        <div class="row">
+          <h2 class="grow">Keyboard shortcuts</h2>
+          <button class="btn ghost icon" data-action="close" aria-label="Close">
+            &times;
+          </button>
+        </div>
+        <table class="tbl">
+          <tbody>
+            <tr>
+              <td>Command palette</td>
+              <td><kbd>&#8984;K</kbd></td>
+            </tr>
+            <tr>
+              <td>Create ticket</td>
+              <td><kbd>C</kbd></td>
+            </tr>
+            <tr>
+              <td>Focus search</td>
+              <td><kbd>/</kbd></td>
+            </tr>
+            <tr>
+              <td>Show this help</td>
+              <td><kbd>?</kbd></td>
+            </tr>
+            <tr>
+              <td>Close panel / dialog</td>
+              <td><kbd>Esc</kbd></td>
+            </tr>
+            <tr>
+              <td>Pick up / drop card</td>
+              <td><kbd>Space</kbd></td>
+            </tr>
+            <tr>
+              <td>Move card while dragging</td>
+              <td>
+                <kbd>&uarr;</kbd> <kbd>&darr;</kbd> <kbd>&larr;</kbd>
+                <kbd>&rarr;</kbd>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script src="design.js"></script>
+  </body>
+</html>

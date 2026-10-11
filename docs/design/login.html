@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Sign in · Taskboard</title>
+    <link rel="stylesheet" href="shell.css" />
+    <link rel="stylesheet" href="auth.css" />
+  </head>
+  <body class="framed">
+    <div class="mock-bar">
+      <a href="index.html">&larr; All screens</a><strong>Sign in</strong
+      ><span class="mono">/login · features/auth</span
+      ><span class="spacer"></span
+      ><button data-action="theme">Light/Dark</button>
+    </div>
+    <div class="auth">
+      <main class="auth-form">
+        <form onsubmit="return false;" novalidate>
+          <div class="row">
+            <div class="ws-logo" aria-hidden="true">T</div>
+            <strong>Taskboard</strong>
+          </div>
+          <div>
+            <h1>Welcome back</h1>
+            <p class="muted">Sign in to your workspace.</p>
+          </div>
+          <div class="banner error" role="alert" style="border-radius: 8px">
+            Invalid email or password.
+          </div>
+          <div class="field">
+            <label for="e">Email</label
+            ><input
+              id="e"
+              class="input error"
+              type="email"
+              value="sam@acme.com"
+              autocomplete="email"
+              aria-invalid="true"
+            /><span class="err"
+              >Check your email or password and try again.</span
+            >
+          </div>
+          <div class="field">
+            <label for="p">Password</label
+            ><input
+              id="p"
+              class="input"
+              type="password"
+              value="password"
+              autocomplete="current-password"
+            />
+          </div>
+          <div class="row"><a href="reset.html">Forgot password?</a></div>
+          <button class="btn primary" style="justify-content: center">
+            Sign in
+          </button>
+          <button class="btn loading" style="justify-content: center" disabled>
+            Signing in…
+          </button>
+          <div class="or">or</div>
+          <button class="btn" style="justify-content: center">
+            Continue with Google
+          </button>
+          <button class="btn" style="justify-content: center">
+            Continue with GitHub
+          </button>
+          <p class="muted">No account? <a href="signup.html">Sign up</a></p>
+          <p class="mock-note">
+            States shown: error banner + field error (top), idle button, loading
+            button. Success redirects to the safe <code>?redirect=</code> target
+            or <code>/</code>.
+          </p>
+        </form>
+      </main>
+      <aside class="auth-hero" aria-hidden="true">
+        <div>
+          <h2>Plan, track and ship together.</h2>
+          <div class="mini">
+            <div><i></i><i></i></div>
+            <div><i></i><i></i><i></i></div>
+            <div><i></i></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <script src="design.js"></script>
+  </body>
+</html>

@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>List view · Taskboard</title>
+    <link rel="stylesheet" href="shell.css" />
+    <link rel="stylesheet" href="board.css" />
+  </head>
+  <body class="framed">
+    <div class="mock-bar">
+      <a href="index.html">&larr; All screens</a><strong>List view</strong
+      ><span class="mono"
+        >/w/:workspace/p/:project/list · features/board (list)</span
+      ><span class="spacer"></span
+      ><button data-action="role">Viewer preview</button
+      ><button data-action="theme">Light/Dark</button>
+    </div>
+    <div class="app">
+      <aside class="sidebar" aria-label="Primary">
+        <button
+          class="ws-switch"
+          style="font: inherit; color: inherit; text-align: left"
+          aria-haspopup="menu"
+        >
+          <span class="ws-logo" aria-hidden="true">A</span
+          ><span class="grow"
+            ><strong>Acme</strong><br /><span
+              class="muted"
+              style="font-size: 12px"
+              >3 projects · 6 members</span
+            ></span
+          ><span aria-hidden="true">&#9662;</span>
+        </button>
+        <nav class="nav" aria-label="Workspace">
+          <a href="workspace-home.html">Projects home</a>
+          <a href="notifications.html"
+            >Notifications <span class="count badge accent">3</span></a
+          >
+          <a href="workspace-settings.html">Members &amp; settings</a>
+          <h4>Project · WEB</h4>
+          <a href="board.html">Board</a>
+          <a href="list.html" aria-current="page">List</a>
+          <a href="project-settings.html">Project settings</a>
+          <h4>Other projects</h4>
+          <a href="#">Mobile app <span class="count">MOB</span></a>
+          <a href="#">Design system <span class="count">DS</span></a>
+        </nav>
+        <div class="mock-note" style="margin-top: auto">
+          app/ layout shell · sidebar becomes a drawer under 800px
+        </div>
+      </aside>
+      <header class="topbar">
+        <nav aria-label="Breadcrumb" class="muted">Acme / Web app / List</nav>
+        <span class="grow"></span>
+        <button class="search-trigger" data-action="open" data-target="palette">
+          <span aria-hidden="true">&#128269;</span
+          ><span class="grow" style="text-align: left">Search or jump to…</span
+          ><kbd>&#8984;K</kbd>
+        </button>
+        <button
+          class="btn icon ghost"
+          aria-label="Keyboard shortcuts"
+          data-action="open"
+          data-target="shortcuts"
+        >
+          ?
+        </button>
+        <a
+          class="btn icon ghost"
+          href="notifications.html"
+          aria-label="Notifications, 3 unread"
+          style="text-decoration: none"
+          >&#128276;</a
+        >
+        <span class="avatar lg" role="img" aria-label="Account: Sam Rivera"
+          >SR</span
+        >
+      </header>
+      <main class="main" id="main">
+        <div class="board-head">
+          <div class="row" style="flex-wrap: wrap; gap: 12px">
+            <div>
+              <h1>Web app</h1>
+              <p class="muted">WEB · List · 10,000 tickets</p>
+            </div>
+            <span class="grow"></span>
+            <div class="row" role="group" aria-label="View">
+              <a
+                class="btn sm ghost"
+                href="board.html"
+                style="text-decoration: none"
+                >Board</a
+              ><a
+                class="btn sm"
+                style="text-decoration: none"
+                aria-current="page"
+                >List</a
+              >
+            </div>
+            <button class="btn primary can-edit">+ Create ticket</button>
+          </div>
+        </div>
+        <div class="filters" role="search">
+          <input
+            class="input search"
+            type="search"
+            placeholder="Search  /"
+            aria-label="Search tickets"
+          /><button class="fchip">Assignee &#9662;</button
+          ><button class="fchip">Label &#9662;</button
+          ><button class="fchip">Priority &#9662;</button
+          ><button class="fchip">Type &#9662;</button
+          ><button class="fchip">Due &#9662;</button><span class="grow"></span
+          ><span class="muted" style="font-size: 12px"
+            >Showing 11 of 10,000 · virtualized</span
+          >
+        </div>
+        <div
+          style="
+            max-height: 540px;
+            overflow: auto;
+            margin: 16px 20px;
+            border: 1px solid hsl(var(--border));
+            border-radius: 12px;
+          "
+          tabindex="0"
+          aria-label="Ticket list, scrollable"
+        >
+          <table class="tbl" aria-rowcount="10000">
+            <thead>
+              <tr>
+                <th style="position: sticky; top: 0; z-index: 1">
+                  <button
+                    class="btn ghost sm"
+                    style="
+                      text-transform: inherit;
+                      font: inherit;
+                      letter-spacing: inherit;
+                    "
+                    aria-label="Sort by Key"
+                  >
+                    Key <span aria-hidden="true">&#8693;</span>
+                  </button>
+                </th>
+                <th style="position: sticky; top: 0; z-index: 1">
+                  <button
+                    class="btn ghost sm"
+                    style="
+                      text-transform: inherit;
+                      font: inherit;
+                      letter-spacing: inherit;
+                    "
+                    aria-label="Sort by Title"
+                  >
+                    Title <span aria-hidden="true">&#8693;</span>
+                  </button>
+                </th>
+                <th style="position: sticky; top: 0; z-index: 1">
+                  <button
+                    class="btn ghost sm"
+                    style="
+                      text-transform: inherit;
+                      font: inherit;
+                      letter-spacing: inherit;
+                    "
+                    aria-label="Sort by Type"
+                  >
+                    Type <span aria-hidden="true">&#8693;</span>
+                  </button>
+                </th>
+                <th style="position: sticky; top: 0; z-index: 1">
+                  <button
+                    class="btn ghost sm"
+                    style="
+                      text-transform: inherit;
+                      font: inherit;
+                      letter-spacing: inherit;
+                    "
+                    aria-label="Sort by Priority"
+                  >
+                    Priority <span aria-hidden="true">&#8693;</span>
+                  </button>
+                </th>
+                <th style="position: sticky; top: 0; z-index: 1">
+                  <button
+                    class="btn ghost sm"
+                    style="
+                      text-transform: inherit;
+                      font: inherit;
+                      letter-spacing: inherit;
+                    "
+                    aria-label="Sort by Status"
+                  >
+                    Status <span aria-hidden="true">&#8693;</span>
+                  </button>
+                </th>
+                <th style="position: sticky; top: 0; z-index: 1">
+                  <button
+                    class="btn ghost sm"
+                    style="
+                      text-transform: inherit;
+                      font: inherit;
+                      letter-spacing: inherit;
+                    "
+                    aria-label="Sort by Assignee"
+                  >
+                    Assignee <span aria-hidden="true">&#8693;</span>
+                  </button>
+                </th>
+                <th style="position: sticky; top: 0; z-index: 1">
+                  <button
+                    class="btn ghost sm"
+                    style="
+                      text-transform: inherit;
+                      font: inherit;
+                      letter-spacing: inherit;
+                    "
+                    aria-label="Sort by Due"
+                  >
+                    Due <span aria-hidden="true">&#8693;</span>
+                  </button>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr aria-rowindex="2" tabindex="0">
+                <td class="mono"><a href="ticket.html">WEB-142</a></td>
+                <td>Redesign onboarding checklist</td>
+                <td>
+                  <span class="row"
+                    ><span class="type story">S</span> Story</span
+                  >
+                </td>
+                <td class="p-high">High</td>
+                <td><span class="badge">In Progress</span></td>
+                <td><span class="avatar">SR</span></td>
+                <td>Apr 12</td>
+              </tr>
+              <tr aria-rowindex="3" tabindex="0">
+                <td class="mono"><a href="ticket.html">WEB-141</a></td>
+                <td>Rate limit login attempts</td>
+                <td>
+                  <span class="row"><span class="type task">T</span> Task</span>
+                </td>
+                <td class="p-highest">Highest</td>
+                <td><span class="badge">To Do</span></td>
+                <td><span class="avatar">JK</span></td>
+                <td>Apr 10</td>
+              </tr>
+              <tr aria-rowindex="4" tabindex="0">
+                <td class="mono"><a href="ticket.html">WEB-140</a></td>
+                <td>Fractional index rebalance job</td>
+                <td>
+                  <span class="row"><span class="type task">T</span> Task</span>
+                </td>
+                <td class="p-medium">Medium</td>
+                <td><span class="badge">To Do</span></td>
+                <td><span class="avatar">AL</span></td>
+                <td><span class="muted">—</span></td>
+              </tr>
+              <tr aria-rowindex="5" tabindex="0">
+                <td class="mono"><a href="ticket.html">WEB-139</a></td>
+                <td>Add empty state to saved views</td>
+                <td>
+                  <span class="row"><span class="type task">T</span> Task</span>
+                </td>
+                <td class="p-medium">Medium</td>
+                <td><span class="badge">To Do</span></td>
+                <td><span class="avatar">JK</span></td>
+                <td><span class="muted">—</span></td>
+              </tr>
+              <tr aria-rowindex="6" tabindex="0">
+                <td class="mono"><a href="ticket.html">WEB-138</a></td>
+                <td>Drag preview offset on Safari</td>
+                <td>
+                  <span class="row"><span class="type bug">B</span> Bug</span>
+                </td>
+                <td class="p-highest">Highest</td>
+                <td><span class="badge">In Progress</span></td>
+                <td><span class="avatar">SR</span></td>
+                <td>Today</td>
+              </tr>
+              <tr aria-rowindex="7" tabindex="0">
+                <td class="mono"><a href="ticket.html">WEB-135</a></td>
+                <td>Optimistic move rollback toast</td>
+                <td>
+                  <span class="row"
+                    ><span class="type story">S</span> Story</span
+                  >
+                </td>
+                <td class="p-high">High</td>
+                <td><span class="badge">In Progress</span></td>
+                <td><span class="avatar">AL</span></td>
+                <td><span class="muted">—</span></td>
+              </tr>
+              <tr aria-rowindex="8" tabindex="0">
+                <td class="mono"><a href="ticket.html">WEB-131</a></td>
+                <td>Document keyboard shortcuts</td>
+                <td>
+                  <span class="row"><span class="type task">T</span> Task</span>
+                </td>
+                <td class="p-low">Low</td>
+                <td><span class="badge">To Do</span></td>
+                <td><span class="avatar">AL</span></td>
+                <td>Apr 30</td>
+              </tr>
+              <tr aria-rowindex="9" tabindex="0">
+                <td class="mono"><a href="ticket.html">WEB-127</a></td>
+                <td>Presence avatars in header</td>
+                <td>
+                  <span class="row"><span class="type task">T</span> Task</span>
+                </td>
+                <td class="p-medium">Medium</td>
+                <td><span class="badge">In Progress</span></td>
+                <td><span class="avatar">JK</span></td>
+                <td><span class="muted">—</span></td>
+              </tr>
+              <tr aria-rowindex="10" tabindex="0">
+                <td class="mono"><a href="ticket.html">WEB-120</a></td>
+                <td>Filter bar URL round-trip</td>
+                <td>
+                  <span class="row"
+                    ><span class="type story">S</span> Story</span
+                  >
+                </td>
+                <td class="p-high">High</td>
+                <td><span class="badge">In Review</span></td>
+                <td><span class="avatar">PN</span></td>
+                <td>Apr 8</td>
+              </tr>
+              <tr aria-rowindex="11" tabindex="0">
+                <td class="mono"><a href="ticket.html">WEB-118</a></td>
+                <td>Fix focus ring on card links</td>
+                <td>
+                  <span class="row"><span class="type bug">B</span> Bug</span>
+                </td>
+                <td class="p-low">Low</td>
+                <td><span class="badge">In Review</span></td>
+                <td><span class="avatar">SR</span></td>
+                <td><span class="muted">—</span></td>
+              </tr>
+              <tr aria-rowindex="12" tabindex="0">
+                <td class="mono"><a href="ticket.html">WEB-101</a></td>
+                <td>Project key validation</td>
+                <td>
+                  <span class="row"><span class="type task">T</span> Task</span>
+                </td>
+                <td class="p-medium">Medium</td>
+                <td><span class="badge">Done</span></td>
+                <td><span class="avatar">JK</span></td>
+                <td><span class="muted">—</span></td>
+              </tr>
+              <tr aria-hidden="true">
+                <td colspan="7">
+                  <div class="skel" style="height: 16px"></div>
+                </td>
+              </tr>
+              <tr aria-hidden="true">
+                <td colspan="7">
+                  <div class="skel" style="height: 16px"></div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="page" style="max-width: none; padding-top: 0">
+          <p class="mock-note">
+            Sticky header, TanStack Virtual rows (fixed ~44px), cursor-paged
+            infinite load (skeleton rows at the end), same URL params as board.
+            Click a row to open the ticket drawer.
+          </p>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+              gap: 16px;
+              margin-top: 12px;
+            "
+          >
+            <div class="state">
+              <h3>No tickets</h3>
+              <p>Create the first ticket for this project.</p>
+              <button class="btn primary can-edit">+ Create ticket</button>
+            </div>
+            <div class="state" role="alert">
+              <h3>Couldn't load tickets</h3>
+              <button class="btn">Retry</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <div
+      class="overlay"
+      id="palette"
+      data-overlay
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-label="Command palette"
+    >
+      <div class="dialog palette">
+        <input
+          placeholder="Type a command or search tickets…"
+          aria-label="Command search"
+        />
+        <div class="group">
+          <h4>Tickets</h4>
+          <div class="item" aria-selected="true">
+            <span class="type story">S</span
+            ><span class="mono">WEB-142</span> Redesign onboarding checklist<kbd
+              >&#8629;</kbd
+            >
+          </div>
+          <div class="item">
+            <span class="type bug">B</span
+            ><span class="mono">WEB-138</span> Drag preview offset on Safari
+          </div>
+        </div>
+        <div class="group">
+          <h4>Actions</h4>
+          <div class="item">Create ticket<kbd>C</kbd></div>
+          <div class="item">Switch workspace…</div>
+          <div class="item">Go to project settings</div>
+        </div>
+        <div class="group">
+          <h4>Navigate</h4>
+          <div class="item">Projects home</div>
+          <div class="item">Notifications</div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="overlay"
+      id="shortcuts"
+      data-overlay
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-label="Keyboard shortcuts"
+    >
+      <div class="dialog">
+        <div class="row">
+          <h2 class="grow">Keyboard shortcuts</h2>
+          <button class="btn ghost icon" data-action="close" aria-label="Close">
+            &times;
+          </button>
+        </div>
+        <table class="tbl">
+          <tbody>
+            <tr>
+              <td>Command palette</td>
+              <td><kbd>&#8984;K</kbd></td>
+            </tr>
+            <tr>
+              <td>Create ticket</td>
+              <td><kbd>C</kbd></td>
+            </tr>
+            <tr>
+              <td>Focus search</td>
+              <td><kbd>/</kbd></td>
+            </tr>
+            <tr>
+              <td>Show this help</td>
+              <td><kbd>?</kbd></td>
+            </tr>
+            <tr>
+              <td>Close panel / dialog</td>
+              <td><kbd>Esc</kbd></td>
+            </tr>
+            <tr>
+              <td>Pick up / drop card</td>
+              <td><kbd>Space</kbd></td>
+            </tr>
+            <tr>
+              <td>Move card while dragging</td>
+              <td>
+                <kbd>&uarr;</kbd> <kbd>&darr;</kbd> <kbd>&larr;</kbd>
+                <kbd>&rarr;</kbd>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script src="design.js"></script>
+  </body>
+</html>

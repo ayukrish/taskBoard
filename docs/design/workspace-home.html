@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Workspace home · Taskboard</title>
+    <link rel="stylesheet" href="shell.css" />
+  </head>
+  <body class="framed">
+    <div class="mock-bar">
+      <a href="index.html">&larr; All screens</a><strong>Workspace home</strong
+      ><span class="mono">/w/:workspace · features/workspaces</span
+      ><span class="spacer"></span
+      ><button data-action="role">Viewer preview</button
+      ><button data-action="theme">Light/Dark</button>
+    </div>
+    <div class="app">
+      <aside class="sidebar" aria-label="Primary">
+        <button
+          class="ws-switch"
+          style="font: inherit; color: inherit; text-align: left"
+          aria-haspopup="menu"
+        >
+          <span class="ws-logo" aria-hidden="true">A</span
+          ><span class="grow"
+            ><strong>Acme</strong><br /><span
+              class="muted"
+              style="font-size: 12px"
+              >3 projects · 6 members</span
+            ></span
+          ><span aria-hidden="true">&#9662;</span>
+        </button>
+        <nav class="nav" aria-label="Workspace">
+          <a href="workspace-home.html" aria-current="page">Projects home</a>
+          <a href="notifications.html"
+            >Notifications <span class="count badge accent">3</span></a
+          >
+          <a href="workspace-settings.html">Members &amp; settings</a>
+          <h4>Project · WEB</h4>
+          <a href="board.html">Board</a>
+          <a href="list.html">List</a>
+          <a href="project-settings.html">Project settings</a>
+          <h4>Other projects</h4>
+          <a href="#">Mobile app <span class="count">MOB</span></a>
+          <a href="#">Design system <span class="count">DS</span></a>
+        </nav>
+        <div class="mock-note" style="margin-top: auto">
+          app/ layout shell · sidebar becomes a drawer under 800px
+        </div>
+      </aside>
+      <header class="topbar">
+        <nav aria-label="Breadcrumb" class="muted">Acme</nav>
+        <span class="grow"></span>
+        <button class="search-trigger" data-action="open" data-target="palette">
+          <span aria-hidden="true">&#128269;</span
+          ><span class="grow" style="text-align: left">Search or jump to…</span
+          ><kbd>&#8984;K</kbd>
+        </button>
+        <button
+          class="btn icon ghost"
+          aria-label="Keyboard shortcuts"
+          data-action="open"
+          data-target="shortcuts"
+        >
+          ?
+        </button>
+        <a
+          class="btn icon ghost"
+          href="notifications.html"
+          aria-label="Notifications, 3 unread"
+          style="text-decoration: none"
+          >&#128276;</a
+        >
+        <span class="avatar lg" role="img" aria-label="Account: Sam Rivera"
+          >SR</span
+        >
+      </header>
+      <main class="main" id="main">
+        <div class="page">
+          <div class="page-head">
+            <div>
+              <h1>Projects</h1>
+              <p class="muted">3 active · 1 archived</p>
+            </div>
+            <button class="btn primary can-edit">+ New project</button>
+          </div>
+          <div class="row" style="margin-bottom: 16px">
+            <input
+              class="input"
+              style="max-width: 280px"
+              placeholder="Filter projects"
+              aria-label="Filter projects"
+            /><label class="row muted"
+              ><input type="checkbox" /> Show archived</label
+            >
+          </div>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+              gap: 16px;
+            "
+          >
+            <a
+              class="card panel"
+              href="board.html"
+              style="text-decoration: none; color: inherit"
+              ><div class="row">
+                <span class="ws-logo" aria-hidden="true">W</span
+                ><strong class="grow">Web app</strong
+                ><span class="badge accent mono">WEB</span>
+              </div>
+              <p class="muted" style="margin: 12px 0">
+                Customer-facing storefront and checkout.
+              </p>
+              <div class="row">
+                <span class="badge">248 tickets</span
+                ><span class="avatars" style="margin-left: auto"
+                  ><span class="avatar">SR</span><span class="avatar">JK</span
+                  ><span class="avatar">+3</span></span
+                >
+              </div></a
+            >
+            <a
+              class="card panel"
+              href="#"
+              style="text-decoration: none; color: inherit"
+              ><div class="row">
+                <span class="ws-logo" aria-hidden="true">M</span
+                ><strong class="grow">Mobile app</strong
+                ><span class="badge accent mono">MOB</span>
+              </div>
+              <p class="muted" style="margin: 12px 0">
+                iOS and Android clients.
+              </p>
+              <div class="row">
+                <span class="badge">91 tickets</span
+                ><span class="avatars" style="margin-left: auto"
+                  ><span class="avatar">AL</span
+                  ><span class="avatar">PN</span></span
+                >
+              </div></a
+            >
+            <a
+              class="card panel"
+              href="#"
+              style="text-decoration: none; color: inherit"
+              ><div class="row">
+                <span class="ws-logo" aria-hidden="true">D</span
+                ><strong class="grow">Design system</strong
+                ><span class="badge accent mono">DS</span>
+              </div>
+              <p class="muted" style="margin: 12px 0">
+                Tokens, components and docs.
+              </p>
+              <div class="row">
+                <span class="badge">34 tickets</span
+                ><span class="avatars" style="margin-left: auto"
+                  ><span class="avatar">JK</span></span
+                >
+              </div></a
+            >
+          </div>
+          <h2 style="margin: 32px 0 12px">Other states</h2>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+              gap: 16px;
+            "
+          >
+            <div>
+              <p class="mock-note">loading</p>
+              <div class="card panel col">
+                <div class="skel" style="height: 28px; width: 60%"></div>
+                <div class="skel" style="height: 14px"></div>
+                <div class="skel" style="height: 14px; width: 80%"></div>
+              </div>
+            </div>
+            <div>
+              <p class="mock-note">empty</p>
+              <div class="state">
+                <div class="glyph" aria-hidden="true">&#128193;</div>
+                <h3>No projects yet</h3>
+                <p>Create your first project to start a board.</p>
+                <button class="btn primary can-edit">+ New project</button
+                ><span class="viewer-only">Ask an admin to create one.</span>
+              </div>
+            </div>
+            <div>
+              <p class="mock-note">error</p>
+              <div class="state" role="alert">
+                <div class="glyph" aria-hidden="true">&#9888;</div>
+                <h3>Couldn't load projects</h3>
+                <p>Network error. Check your connection.</p>
+                <button class="btn">Retry</button>
+              </div>
+            </div>
+          </div>
+          <p class="mock-note" style="margin-top: 24px">
+            New project dialog (Admin+)
+          </p>
+          <div class="dialog" style="margin-top: 8px">
+            <h2>New project</h2>
+            <div class="field">
+              <label for="pn">Name</label
+              ><input id="pn" class="input" value="Web app" />
+            </div>
+            <div class="field">
+              <label for="pk">Key</label
+              ><input id="pk" class="input mono" value="WEB" /><span
+                class="hint"
+                >2–6 uppercase letters. Used for ticket IDs like WEB-123. Cannot
+                be changed later.</span
+              >
+            </div>
+            <div class="actions">
+              <button class="btn">Cancel</button
+              ><button class="btn primary">Create project</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <div
+      class="overlay"
+      id="palette"
+      data-overlay
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-label="Command palette"
+    >
+      <div class="dialog palette">
+        <input
+          placeholder="Type a command or search tickets…"
+          aria-label="Command search"
+        />
+        <div class="group">
+          <h4>Tickets</h4>
+          <div class="item" aria-selected="true">
+            <span class="type story">S</span
+            ><span class="mono">WEB-142</span> Redesign onboarding checklist<kbd
+              >&#8629;</kbd
+            >
+          </div>
+          <div class="item">
+            <span class="type bug">B</span
+            ><span class="mono">WEB-138</span> Drag preview offset on Safari
+          </div>
+        </div>
+        <div class="group">
+          <h4>Actions</h4>
+          <div class="item">Create ticket<kbd>C</kbd></div>
+          <div class="item">Switch workspace…</div>
+          <div class="item">Go to project settings</div>
+        </div>
+        <div class="group">
+          <h4>Navigate</h4>
+          <div class="item">Projects home</div>
+          <div class="item">Notifications</div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="overlay"
+      id="shortcuts"
+      data-overlay
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-label="Keyboard shortcuts"
+    >
+      <div class="dialog">
+        <div class="row">
+          <h2 class="grow">Keyboard shortcuts</h2>
+          <button class="btn ghost icon" data-action="close" aria-label="Close">
+            &times;
+          </button>
+        </div>
+        <table class="tbl">
+          <tbody>
+            <tr>
+              <td>Command palette</td>
+              <td><kbd>&#8984;K</kbd></td>
+            </tr>
+            <tr>
+              <td>Create ticket</td>
+              <td><kbd>C</kbd></td>
+            </tr>
+            <tr>
+              <td>Focus search</td>
+              <td><kbd>/</kbd></td>
+            </tr>
+            <tr>
+              <td>Show this help</td>
+              <td><kbd>?</kbd></td>
+            </tr>
+            <tr>
+              <td>Close panel / dialog</td>
+              <td><kbd>Esc</kbd></td>
+            </tr>
+            <tr>
+              <td>Pick up / drop card</td>
+              <td><kbd>Space</kbd></td>
+            </tr>
+            <tr>
+              <td>Move card while dragging</td>
+              <td>
+                <kbd>&uarr;</kbd> <kbd>&darr;</kbd> <kbd>&larr;</kbd>
+                <kbd>&rarr;</kbd>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script src="design.js"></script>
+  </body>
+</html>

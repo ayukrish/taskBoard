@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Taskboard mockups</title>
+    <link rel="stylesheet" href="shell.css" />
+  </head>
+  <body>
+    <div class="mock-bar">
+      <strong>Taskboard design mockups</strong><span class="spacer"></span
+      ><button data-action="theme">Light/Dark</button>
+    </div>
+    <main class="page">
+      <h1>Screens</h1>
+      <p class="muted" style="margin: 6px 0 20px">
+        Static HTML/CSS reference for building the React app. Not production
+        code. Tokens in <code>tokens.css</code> map to the Tailwind config. Add
+        <code>?role=viewer</code> or use “Viewer preview” to see the read-only
+        variant. Overlays: <kbd>&#8984;K</kbd> command palette,
+        <kbd>?</kbd> shortcuts (open on any app screen).
+      </p>
+      <div class="card">
+        <table class="tbl">
+          <thead>
+            <tr>
+              <th>Screen</th>
+              <th>Route</th>
+              <th>Feature folder</th>
+              <th>Milestone</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="login.html">Sign in</a></td>
+              <td class="mono">/login</td>
+              <td class="mono">features/auth</td>
+              <td>M1</td>
+            </tr>
+            <tr>
+              <td><a href="signup.html">Sign up</a></td>
+              <td class="mono">/signup</td>
+              <td class="mono">features/auth</td>
+              <td>M1</td>
+            </tr>
+            <tr>
+              <td><a href="reset.html">Reset password</a></td>
+              <td class="mono">/reset</td>
+              <td class="mono">features/auth</td>
+              <td>M1 (S)</td>
+            </tr>
+            <tr>
+              <td>
+                <a href="workspace-home.html">Workspace home / projects</a>
+              </td>
+              <td class="mono">/w/:workspace</td>
+              <td class="mono">features/workspaces, projects</td>
+              <td>M1-M2</td>
+            </tr>
+            <tr>
+              <td>
+                <a href="workspace-settings.html">Members, invites, roles</a>
+              </td>
+              <td class="mono">/w/:workspace/settings</td>
+              <td class="mono">features/workspaces</td>
+              <td>M1</td>
+            </tr>
+            <tr>
+              <td>
+                <a href="board.html">Kanban board + filters + DnD states</a>
+              </td>
+              <td class="mono">/w/:workspace/p/:project/board</td>
+              <td class="mono">features/board, filters</td>
+              <td>M2-M5</td>
+            </tr>
+            <tr>
+              <td>
+                <a href="create-ticket.html"
+                  >Create ticket dialog (full form)</a
+                >
+              </td>
+              <td class="mono">dialog over board</td>
+              <td class="mono">features/tickets</td>
+              <td>M3</td>
+            </tr>
+            <tr>
+              <td><a href="ticket.html">Ticket detail drawer over board</a></td>
+              <td class="mono">/w/:workspace/p/:project/t/:key</td>
+              <td class="mono">features/tickets</td>
+              <td>M3, M7</td>
+            </tr>
+            <tr>
+              <td><a href="list.html">Virtualized list view</a></td>
+              <td class="mono">/w/:workspace/p/:project/list</td>
+              <td class="mono">features/board</td>
+              <td>M6</td>
+            </tr>
+            <tr>
+              <td>
+                <a href="project-settings.html"
+                  >Columns, WIP, labels, delete-column dialog</a
+                >
+              </td>
+              <td class="mono">/w/:workspace/p/:project/settings</td>
+              <td class="mono">features/projects</td>
+              <td>M2</td>
+            </tr>
+            <tr>
+              <td><a href="notifications.html">Notification center</a></td>
+              <td class="mono">/notifications</td>
+              <td class="mono">features/notifications</td>
+              <td>M7</td>
+            </tr>
+            <tr>
+              <td><a href="not-found.html">404</a></td>
+              <td class="mono">*</td>
+              <td class="mono">app/</td>
+              <td>M0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h2 style="margin: 28px 0 8px">Design rules</h2>
+      <ul>
+        <li>
+          Tokens use shadcn names (<code>--background</code>,
+          <code>--primary</code>, <code>--muted</code>…) as HSL triplets, so
+          <code>hsl(var(--primary))</code> works with Tailwind.
+        </li>
+        <li>
+          Light and dark: <code>prefers-color-scheme</code> plus a manual
+          <code>data-theme</code> override.
+        </li>
+        <li>Every async view shows loading, empty and error states.</li>
+        <li>
+          Role-hidden controls use <code>.can-edit</code> here; in React use
+          <code>&lt;Can action="…"&gt;</code>. The server still enforces
+          permissions.
+        </li>
+        <li>
+          Under 800px the sidebar becomes a drawer and board columns snap-scroll
+          (~84vw wide) down to 360px.
+        </li>
+      </ul>
+    </main>
+    <script src="design.js"></script>
+  </body>
+</html>

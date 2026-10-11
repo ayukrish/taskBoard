@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Project settings · Taskboard</title>
+    <link rel="stylesheet" href="shell.css" />
+    <link rel="stylesheet" href="board.css" />
+  </head>
+  <body class="framed">
+    <div class="mock-bar">
+      <a href="index.html">&larr; All screens</a
+      ><strong>Project settings</strong
+      ><span class="mono"
+        >/w/:workspace/p/:project/settings · features/projects</span
+      ><span class="spacer"></span
+      ><button data-action="role">Viewer preview</button
+      ><button data-action="theme">Light/Dark</button>
+    </div>
+    <div class="app">
+      <aside class="sidebar" aria-label="Primary">
+        <button
+          class="ws-switch"
+          style="font: inherit; color: inherit; text-align: left"
+          aria-haspopup="menu"
+        >
+          <span class="ws-logo" aria-hidden="true">A</span
+          ><span class="grow"
+            ><strong>Acme</strong><br /><span
+              class="muted"
+              style="font-size: 12px"
+              >3 projects · 6 members</span
+            ></span
+          ><span aria-hidden="true">&#9662;</span>
+        </button>
+        <nav class="nav" aria-label="Workspace">
+          <a href="workspace-home.html">Projects home</a>
+          <a href="notifications.html"
+            >Notifications <span class="count badge accent">3</span></a
+          >
+          <a href="workspace-settings.html">Members &amp; settings</a>
+          <h4>Project · WEB</h4>
+          <a href="board.html">Board</a>
+          <a href="list.html">List</a>
+          <a href="project-settings.html" aria-current="page"
+            >Project settings</a
+          >
+          <h4>Other projects</h4>
+          <a href="#">Mobile app <span class="count">MOB</span></a>
+          <a href="#">Design system <span class="count">DS</span></a>
+        </nav>
+        <div class="mock-note" style="margin-top: auto">
+          app/ layout shell · sidebar becomes a drawer under 800px
+        </div>
+      </aside>
+      <header class="topbar">
+        <nav aria-label="Breadcrumb" class="muted">
+          Acme / Web app / Settings
+        </nav>
+        <span class="grow"></span>
+        <button class="search-trigger" data-action="open" data-target="palette">
+          <span aria-hidden="true">&#128269;</span
+          ><span class="grow" style="text-align: left">Search or jump to…</span
+          ><kbd>&#8984;K</kbd>
+        </button>
+        <button
+          class="btn icon ghost"
+          aria-label="Keyboard shortcuts"
+          data-action="open"
+          data-target="shortcuts"
+        >
+          ?
+        </button>
+        <a
+          class="btn icon ghost"
+          href="notifications.html"
+          aria-label="Notifications, 3 unread"
+          style="text-decoration: none"
+          >&#128276;</a
+        >
+        <span class="avatar lg" role="img" aria-label="Account: Sam Rivera"
+          >SR</span
+        >
+      </header>
+      <main class="main" id="main">
+        <div class="page">
+          <div class="page-head">
+            <div>
+              <h1>Project settings</h1>
+              <p class="muted">
+                Admins can change these. Members and Viewers see them read-only.
+              </p>
+            </div>
+          </div>
+          <div class="tabs">
+            <a href="#" aria-current="page">Columns</a><a href="#">Labels</a
+            ><a href="#">General</a>
+          </div>
+          <h2 style="margin-bottom: 12px">Columns</h2>
+          <div class="card">
+            <table class="tbl">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Name</th>
+                  <th>Tickets</th>
+                  <th>WIP limit</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="can-edit" style="width: 36px">
+                    <button
+                      class="btn sm ghost icon"
+                      aria-label="Reorder To Do"
+                    >
+                      &#8942;&#8942;
+                    </button>
+                  </td>
+                  <td>
+                    <input
+                      class="input can-edit"
+                      value="To Do"
+                      aria-label="Column name"
+                      style="max-width: 240px"
+                    /><span class="viewer-only">To Do</span>
+                  </td>
+                  <td>3</td>
+                  <td>
+                    <input
+                      class="input can-edit"
+                      value=""
+                      placeholder="None"
+                      aria-label="WIP limit for To Do"
+                      style="width: 90px"
+                    /><span class="viewer-only">None</span>
+                  </td>
+                  <td style="text-align: right">
+                    <button
+                      class="btn sm danger can-edit"
+                      data-action="open"
+                      data-target="delcol"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="can-edit" style="width: 36px">
+                    <button
+                      class="btn sm ghost icon"
+                      aria-label="Reorder In Progress"
+                    >
+                      &#8942;&#8942;
+                    </button>
+                  </td>
+                  <td>
+                    <input
+                      class="input can-edit"
+                      value="In Progress"
+                      aria-label="Column name"
+                      style="max-width: 240px"
+                    /><span class="viewer-only">In Progress</span>
+                  </td>
+                  <td>3</td>
+                  <td>
+                    <input
+                      class="input can-edit"
+                      value="3"
+                      placeholder="None"
+                      aria-label="WIP limit for In Progress"
+                      style="width: 90px"
+                    /><span class="viewer-only">3</span>
+                  </td>
+                  <td style="text-align: right">
+                    <button
+                      class="btn sm danger can-edit"
+                      data-action="open"
+                      data-target="delcol"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="can-edit" style="width: 36px">
+                    <button
+                      class="btn sm ghost icon"
+                      aria-label="Reorder In Review"
+                    >
+                      &#8942;&#8942;
+                    </button>
+                  </td>
+                  <td>
+                    <input
+                      class="input can-edit"
+                      value="In Review"
+                      aria-label="Column name"
+                      style="max-width: 240px"
+                    /><span class="viewer-only">In Review</span>
+                  </td>
+                  <td>2</td>
+                  <td>
+                    <input
+                      class="input can-edit"
+                      value=""
+                      placeholder="None"
+                      aria-label="WIP limit for In Review"
+                      style="width: 90px"
+                    /><span class="viewer-only">None</span>
+                  </td>
+                  <td style="text-align: right">
+                    <button
+                      class="btn sm danger can-edit"
+                      data-action="open"
+                      data-target="delcol"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="can-edit" style="width: 36px">
+                    <button class="btn sm ghost icon" aria-label="Reorder Done">
+                      &#8942;&#8942;
+                    </button>
+                  </td>
+                  <td>
+                    <input
+                      class="input can-edit"
+                      value="Done"
+                      aria-label="Column name"
+                      style="max-width: 240px"
+                    /><span class="viewer-only">Done</span>
+                  </td>
+                  <td>1</td>
+                  <td>
+                    <input
+                      class="input can-edit"
+                      value=""
+                      placeholder="None"
+                      aria-label="WIP limit for Done"
+                      style="width: 90px"
+                    /><span class="viewer-only">None</span>
+                  </td>
+                  <td style="text-align: right">
+                    <button
+                      class="btn sm danger can-edit"
+                      data-action="open"
+                      data-target="delcol"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <button class="btn can-edit" style="margin-top: 12px">
+            + Add column
+          </button>
+          <h2 style="margin: 32px 0 12px">Labels</h2>
+          <div class="row" style="flex-wrap: wrap">
+            <span class="label-chip">ux</span
+            ><span class="label-chip">growth</span
+            ><span class="label-chip">bug</span
+            ><span class="label-chip">dnd</span
+            ><span class="label-chip">docs</span
+            ><span class="label-chip">realtime</span
+            ><button class="btn sm can-edit">+ New label</button>
+          </div>
+          <h2 style="margin: 32px 0 12px">General</h2>
+          <div class="card panel col" style="max-width: 520px">
+            <div class="field">
+              <label for="n">Project name</label
+              ><input id="n" class="input" value="Web app" />
+            </div>
+            <div class="field">
+              <label for="k">Key</label
+              ><input id="k" class="input mono" value="WEB" disabled /><span
+                class="hint"
+                >Key is permanent: ticket IDs depend on it.</span
+              >
+            </div>
+            <div class="row">
+              <button class="btn primary can-edit">Save</button
+              ><button class="btn can-edit">Archive project</button
+              ><button class="btn danger can-edit">Delete project</button>
+            </div>
+          </div>
+          <p class="mock-note" style="margin-top: 12px">
+            Below: the delete-column dialog (FR-P4), opened by any Delete button
+            above.
+          </p>
+          <div class="dialog" style="margin-top: 8px">
+            <h2>Delete “In Review”?</h2>
+            <p>
+              This column has <strong>2 tickets</strong>. Choose where to move
+              them before deleting.
+            </p>
+            <div class="field">
+              <label for="dest">Move tickets to</label
+              ><select id="dest" class="input">
+                <option>To Do</option>
+                <option>In Progress</option>
+                <option>Done</option>
+              </select>
+            </div>
+            <div class="actions">
+              <button class="btn">Cancel</button
+              ><button class="btn danger">Move tickets and delete</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <div
+      class="overlay"
+      id="delcol"
+      data-overlay
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-label="Delete column"
+    >
+      <div class="dialog">
+        <h2>Delete “In Review”?</h2>
+        <p>
+          This column has <strong>2 tickets</strong>. Choose where to move them
+          before deleting.
+        </p>
+        <div class="field">
+          <label for="dest2">Move tickets to</label
+          ><select id="dest2" class="input">
+            <option>To Do</option>
+            <option>In Progress</option>
+            <option>Done</option>
+          </select>
+        </div>
+        <div class="actions">
+          <button class="btn" data-action="close">Cancel</button
+          ><button class="btn danger" data-action="close">
+            Move tickets and delete
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="overlay"
+      id="palette"
+      data-overlay
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-label="Command palette"
+    >
+      <div class="dialog palette">
+        <input
+          placeholder="Type a command or search tickets…"
+          aria-label="Command search"
+        />
+        <div class="group">
+          <h4>Tickets</h4>
+          <div class="item" aria-selected="true">
+            <span class="type story">S</span
+            ><span class="mono">WEB-142</span> Redesign onboarding checklist<kbd
+              >&#8629;</kbd
+            >
+          </div>
+          <div class="item">
+            <span class="type bug">B</span
+            ><span class="mono">WEB-138</span> Drag preview offset on Safari
+          </div>
+        </div>
+        <div class="group">
+          <h4>Actions</h4>
+          <div class="item">Create ticket<kbd>C</kbd></div>
+          <div class="item">Switch workspace…</div>
+          <div class="item">Go to project settings</div>
+        </div>
+        <div class="group">
+          <h4>Navigate</h4>
+          <div class="item">Projects home</div>
+          <div class="item">Notifications</div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="overlay"
+      id="shortcuts"
+      data-overlay
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-label="Keyboard shortcuts"
+    >
+      <div class="dialog">
+        <div class="row">
+          <h2 class="grow">Keyboard shortcuts</h2>
+          <button class="btn ghost icon" data-action="close" aria-label="Close">
+            &times;
+          </button>
+        </div>
+        <table class="tbl">
+          <tbody>
+            <tr>
+              <td>Command palette</td>
+              <td><kbd>&#8984;K</kbd></td>
+            </tr>
+            <tr>
+              <td>Create ticket</td>
+              <td><kbd>C</kbd></td>
+            </tr>
+            <tr>
+              <td>Focus search</td>
+              <td><kbd>/</kbd></td>
+            </tr>
+            <tr>
+              <td>Show this help</td>
+              <td><kbd>?</kbd></td>
+            </tr>
+            <tr>
+              <td>Close panel / dialog</td>
+              <td><kbd>Esc</kbd></td>
+            </tr>
+            <tr>
+              <td>Pick up / drop card</td>
+              <td><kbd>Space</kbd></td>
+            </tr>
+            <tr>
+              <td>Move card while dragging</td>
+              <td>
+                <kbd>&uarr;</kbd> <kbd>&darr;</kbd> <kbd>&larr;</kbd>
+                <kbd>&rarr;</kbd>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script src="design.js"></script>
+  </body>
+</html>
